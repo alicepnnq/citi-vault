@@ -1,0 +1,14 @@
+#le fichier qui dit à dbt où se trouve ta base Postgres et comment s’y connecter.
+
+citi_vault:
+  target: prod
+  outputs:
+    prod:
+      type: postgres
+      host: postgres
+      user: postgres
+      password: postgres
+      port: 5432
+      dbname: citi
+      schema: raw
+      threads: 2

@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    database: citi
+    schema: raw
+    tables:
+      - name: gbfs_station
+      - name: gbfs_station_information
+      - name: gbfs_station_status
+      - name: gbfs_system_regions
+      - name: weather_raw
+      - name: trips

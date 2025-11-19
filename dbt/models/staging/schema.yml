@@ -1,0 +1,55 @@
+version: 2
+
+models:
+
+  - name: stg_station_information
+    description: "Station metadata coming from GBFS station_information"
+    columns:
+      - name: station_id
+        description: "Unique identifier of the station in GBFS"
+        tests:
+          - not_null
+          - unique
+      - name: short_name
+        description: "Public/stable identifier of the station used in trips"
+        tests:
+          - not_null
+          - unique
+      - name: lat
+        tests:
+          - not_null
+      - name: lon
+        tests:
+          - not_null
+
+  - name: stg_station_status
+    description: "Real-time station status snapshot"
+    columns:
+      - name: station_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_station_information')
+              field: station_id
+      - name: short_name
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_station_information')
+              field: short_name
+
+  - name: stg_system_regions
+    description: "Region metadata"
+    columns:
+      - name: region_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_trips
+    description: "Trips history extracted from CSVs"
+    columns:
+      - name: trip_id
+        tests:
+          - not_null
+          - unique

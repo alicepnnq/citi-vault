@@ -1,0 +1,21 @@
+# Postgres volume
+data/postgres_data/
+
+# Airflow
+logs/
+airflow_logs/
+
+# dbt artifacts
+target/
+dbt_packages/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Mac / VSCode
+.DS_Store
+.vscode/
+data/citibike/
+data/gbfs/

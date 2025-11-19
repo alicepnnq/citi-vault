@@ -1,0 +1,30 @@
+# Config du projet, fichier qui dit à dbt comment organiser ton projet.
+
+name: citi_vault
+profile: citi_vault
+
+models:
+  citi_vault:
+    +quote_columns: false
+
+    staging:
+      +schema: staging
+      +materialized: view
+
+    vault:
+      +schema: vault
+      +materialized: table   # HUB/LINK/SAT sont des tables
+      hubs:
+        +tags: ["vault","hub"]
+      links:
+        +tags: ["vault","link"]
+      sats:
+        +tags: ["vault","sat"]
+
+    marts:
+      +schema: marts
+      +materialized: table   # ou view si tu préfères pour la BI
+      dims:
+        +tags: ["mart","dim"]
+      facts:
+        +tags: ["mart","fact"]
